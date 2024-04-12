@@ -33,6 +33,8 @@ def main():
                              value='edmund')
     radio4 = ttk.Radiobutton(radio_frame, text='Lucy Pevensie',
                              value='lucy')
+    radio5 = ttk.Radiobutton(radio_frame, text='Kennyo Pevensie',
+                             value='kennyo')
 
     # This Button will show how it can interact with other widgets.
     button = ttk.Button(mainframe, text='Reset the other widgets')
@@ -43,13 +45,13 @@ def main():
     checkbutton['variable'] = checkbutton_observer
 
     radio_observer = tkinter.StringVar()
-    for radio in [radio1, radio2, radio3, radio4]:
+    for radio in [radio1, radio2, radio3, radio4, radio5]:
         radio['variable'] = radio_observer  # They all need the SAME observer
 
     # Bind callbacks using 'command' and lambda, as we have seen elsewhere.
     checkbutton['command'] = lambda: checkbutton_changed(checkbutton_observer)
 
-    for radio in [radio1, radio2, radio3, radio4]:
+    for radio in [radio1, radio2, radio3, radio4, radio5]:
         radio['command'] = lambda: radiobutton_changed(radio_observer)
 
     button['command'] = lambda: button_pressed(checkbutton_observer,
@@ -62,7 +64,7 @@ def main():
         widget.grid(row=0, column=c, padx=20)
         c = c + 1
 
-    for radio in [radio1, radio2, radio3, radio4]:
+    for radio in [radio1, radio2, radio3, radio4, radio5]:
         radio.grid(sticky='w')
 
     root.mainloop()
